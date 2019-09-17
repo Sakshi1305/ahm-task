@@ -1,0 +1,26 @@
+<!-- <table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%# binding.pry %>
+    <%# data.each do |d| %>
+      <tr>
+        <td>
+          <%#=  d.name %>
+        </td>
+        <td>
+          <%#= d.message %>
+        </td>
+      </tr>
+    <%# end %>
+  </tbody>
+</table> -->
+
+
+<div id="items_grid" >
+  <%= render partial: 'data/data_list', locals: {data: (@shop.data).order(created_at: :desc)} %>
+</div>

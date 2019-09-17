@@ -1,0 +1,4 @@
+$("#items_grid").html("<%= escape_javascript(render partial: 'data_list', locals: { data: @shop.data.order(created_at: :desc)} ) %>");
+$('#datum_name').val(' ');
+$('#datum_message').val(' ');
+// ("#results").html("<%#= j render 'data', data: @shop.data.order(created_at: :desc)%>")

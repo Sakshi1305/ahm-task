@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.each do |d| %>
+      <tr>
+        <td>
+          <%=  d.name %>
+        </td>
+        <td>
+          <%= d.message %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,22 @@
+<h3>Listings Page</h3>
+
+
+
+<%
+  # this is called by the index method in
+  # the films controller
+%>
+
+
+<h3>Shops Home Page</h3>
+
+
+<% @shops.each do |shop| %>
+  <h3><%= shop.name %></h3>
+  <div>
+    <%=
+      (shop.shop_no)
+    %>
+  </div>
+  <br>
+<% end %>
