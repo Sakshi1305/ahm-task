@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20181001092713) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "data", force: :cascade do |t|
     t.string "name"
     t.string "message"
-    t.integer "shop_id"
+    t.bigint "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_data_on_shop_id"
@@ -29,4 +32,5 @@ ActiveRecord::Schema.define(version: 20181001092713) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "data", "shops"
 end
