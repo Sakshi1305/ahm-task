@@ -1,28 +1,28 @@
-def get_realtime_status_safety_input_data(self, cpuc_cpu_id):
-	"""
-	Get data from realtime status safety input field.
+class DataController < ApplicationController
+  def create
+    @shop = Shop.find(params[:id])
+    @shop_data = @shop.data.new(permitted_data_params)
+    respond_to do |format|
+      if @shop_data.save
+        format.html {redirect_to @shop, notice: 'Data was successfully created.' }
+        format.js
+        format.json { render json: @shop, status: :created, location: @shop}
+      else
+        binding.pry
+        format.html { render 'shops/show' }
+        format.json { render json: @shop_data.errors, status: :unprocessable_entity }
+        # format.js
+      end
+    end
+    # if @shop.data.create!(permitted_data_params)
+    #   redirect_to @shop
+    # else
+    #   render 'new'
+    # end
+  end
 
-	Arguments:
-	| Name         | Description    | M/O |
-	| cpuc_cpu_id  | Subdevice ID for CPU | M |
-
-
-	Returns:
-	| Description |
-	| Dict        |
-
-	Example of returned dictionary:
-	{
-		"C1": "122222222g", ...
-		"H2": "0", ...
-		"S1": "-1"
-	}
-	"""
-
-	return self.iot_portal_handler.get_realtime_status_safety_input_data(cpuc_cpu_id)
-
-def get_message_ids(self):
-	"""
-	Get Ids for all messages stored into message manager
-	"""
-	return list(self._messages)
+  private
+  def permitted_data_params
+    params.require(:datum).permit(:name, :message);
+  end
+end
